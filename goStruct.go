@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"errors"
+	"fmt"
+)
 
 type AuthorName struct {
 	first_name string
@@ -11,6 +14,16 @@ type Book struct {
 	AuthorName
 	title   string
 	book_id int
+}
+
+func CreateBook(first_name, last_name, book_title string, id int) (Book, error) {
+	var book Book
+	if (first_name == "") || (last_name == "") || (book_title == "") || (id < 0) {
+		return Book{}, errors.New("Cannot create a new book.")
+	} else {
+		book = Book{AuthorName{first_name, last_name}, book_title, id}
+		return book, errors.New("Cannot create a new book.")
+	}
 }
 
 func main() {
@@ -28,4 +41,6 @@ func main() {
 	}
 	fmt.Println(book_2)
 	fmt.Println(book_3)
+	book_4, _ := CreateBook("Norek", "Fikolek", "Kotek na plotek", 7)
+	fmt.Println(book_4)
 }
