@@ -49,10 +49,19 @@ func main() {
 	}
 
 	book_5, _ := CreateBook("Norek", "Fikolek", "Kotek na plotek", 7)
+	book_6 := &Book{AuthorName{}, "Book 2", 5}
 
-	fmt.Println(book_1)
-	fmt.Println(book_2)
-	fmt.Println(book_3)
-	fmt.Println(book_4)
-	fmt.Println(book_5)
+	book_7 := &Book{}
+	book_8 := new(Book)
+
+	fmt.Println(book_1)             // {{ }  0}
+	fmt.Println(book_2)             // {{ } Book 2 5}
+	fmt.Println(book_3)             // {{Domino Stefano} Golang Book 1000}
+	fmt.Println(book_4)             // {{D S} GB 1}
+	fmt.Println(book_5)             // {{Norek Fikolek} Kotek na plotek 7}
+	fmt.Printf("Type %T\n", book_5) // Type main.Book
+	fmt.Printf("Type %T\n", book_6) // Type *main.Book
+	fmt.Printf("Type %T\n", book_7) // Type *main.Book
+	fmt.Printf("Type %T\n", book_8) // Type *main.Book
+	fmt.Println(*book_7 == *book_8) // True
 }
