@@ -29,18 +29,30 @@ func CreateBook(first_name, last_name, book_title string, id int) (Book, error) 
 func main() {
 	fmt.Println("Hello Go!!! My good friend:)")
 	book_1 := Book{}
-	fmt.Println(book_1)
+
 	book_2 := Book{
-		AuthorName{"Domino", "Stefano"},
-		"Golang Book",
-		1000}
+		AuthorName{},
+		"Book 2",
+		5}
 	book_3 := Book{
-		AuthorName: AuthorName{first_name: "D", last_name: "S"},
-		title:      "GB",
-		book_id:    1,
+		AuthorName{
+			"Domino",
+			"Stefano"},
+		"Golang Book",
+		1000} // No comma, the bracket has to be in the sma line
+	book_4 := Book{
+		AuthorName: AuthorName{
+			first_name: "D",
+			last_name:  "S"},
+		title:   "GB",
+		book_id: 1, // Here is a comma, so the bracket can be in the next line
 	}
+
+	book_5, _ := CreateBook("Norek", "Fikolek", "Kotek na plotek", 7)
+
+	fmt.Println(book_1)
 	fmt.Println(book_2)
 	fmt.Println(book_3)
-	book_4, _ := CreateBook("Norek", "Fikolek", "Kotek na plotek", 7)
 	fmt.Println(book_4)
+	fmt.Println(book_5)
 }
