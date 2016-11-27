@@ -30,7 +30,21 @@ func ModifyBook(b *Book) {
 	b.first_name = "J"
 	b.last_name = "B"
 	b.book_id = 99
-	fmt.Printf("Before modification: %T %p %v\n", b, &b, b)
+	fmt.Printf("Inside modification: %T %p %v\n", b, &b, b)
+}
+
+func (b Book) MethodModifyBookByValue() {
+	b.first_name = "X"
+	b.last_name = "Y"
+	b.book_id = 111
+	fmt.Printf("Inside modification: %T %p %v\n", b, &b, b)
+}
+
+func (b *Book) MethodModifyBookByPointer() {
+	b.first_name = "X"
+	b.last_name = "Y"
+	b.book_id = 111
+	fmt.Printf("Inside modification: %T %p %v\n", b, &b, b)
 }
 
 func main() {
@@ -72,11 +86,19 @@ func main() {
 	fmt.Printf("Type %T\n", book_8) // Type *main.Book
 	fmt.Println(*book_7 == *book_8) // True
 
-	fmt.Printf("Before modification:  %T %p  %v\n", book_1, &book_1, book_1)
+	fmt.Printf("\nBefore modification:  %T %p  %v\n", book_1, &book_1, book_1)
 	ModifyBook(&book_1)
 	fmt.Printf("After modification:   %T %p  %v\n", book_1, &book_1, book_1)
 
-	fmt.Printf("Before modification: %T %p %v\n", book_7, &book_7, book_7)
+	fmt.Printf("\nBefore modification: %T %p %v\n", book_7, &book_7, book_7)
 	ModifyBook(book_7)
+	fmt.Printf("After modification:  %T %p %v\n", book_7, &book_7, book_7)
+
+	fmt.Printf("\nBefore modification:  %T %p %v\n", book_1, &book_1, book_1)
+	book_7.MethodModifyBookByPointer()
+	fmt.Printf("After modification:   %T %p %v\n", book_1, &book_1, book_1)
+
+	fmt.Printf("\nBefore modification: %T %p %v\n", book_7, &book_7, book_7)
+	book_7.MethodModifyBookByPointer()
 	fmt.Printf("After modification:  %T %p %v\n", book_7, &book_7, book_7)
 }
