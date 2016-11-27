@@ -26,6 +26,13 @@ func CreateBook(first_name, last_name, book_title string, id int) (Book, error) 
 	}
 }
 
+func ModifyBook(b *Book) {
+	b.first_name = "J"
+	b.last_name = "B"
+	b.book_id = 99
+	fmt.Printf("Before modification: %T %p %v\n", b, &b, b)
+}
+
 func main() {
 	fmt.Println("Hello Go!!! My good friend:)")
 	book_1 := Book{}
@@ -64,4 +71,12 @@ func main() {
 	fmt.Printf("Type %T\n", book_7) // Type *main.Book
 	fmt.Printf("Type %T\n", book_8) // Type *main.Book
 	fmt.Println(*book_7 == *book_8) // True
+
+	fmt.Printf("Before modification:  %T %p  %v\n", book_1, &book_1, book_1)
+	ModifyBook(&book_1)
+	fmt.Printf("After modification:   %T %p  %v\n", book_1, &book_1, book_1)
+
+	fmt.Printf("Before modification: %T %p %v\n", book_7, &book_7, book_7)
+	ModifyBook(book_7)
+	fmt.Printf("After modification:  %T %p %v\n", book_7, &book_7, book_7)
 }
