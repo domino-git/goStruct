@@ -33,6 +33,7 @@ func ModifyBook(b *Book) {
 	fmt.Printf("Inside modification: %T %p %v\n", b, &b, b)
 }
 
+// Method with a value receiver
 func (b Book) MethodModifyBookByValue() {
 	b.first_name = "X"
 	b.last_name = "Y"
@@ -40,6 +41,7 @@ func (b Book) MethodModifyBookByValue() {
 	fmt.Printf("Inside modification: %T %p %v\n", b, &b, b)
 }
 
+// Method with a pointer receiver
 func (b *Book) MethodModifyBookByPointer() {
 	b.first_name = "X"
 	b.last_name = "Y"
